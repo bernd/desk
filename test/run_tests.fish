@@ -18,4 +18,10 @@ set RAN (desk run hello 'say_hello mrfish')
 echo $RAN | grep "Hello mrfish" >/dev/null
 test $status -ne 0; and echo "Desk run with 'hello' failed"; and exit 1
 
+set RAN (env DESK_SHELL_ARGS=-l desk run hello 'status --is-login && echo YES || echo NO')
+echo $RAN | grep "YES" >/dev/null
+test $status -ne 0; and echo "Desk run with DESK_SHELL_ARGS failed"; and exit 1
+
+echo "tests pass."
+
 exit 0

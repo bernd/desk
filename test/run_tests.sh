@@ -143,6 +143,10 @@ RAN=$(desk run hello echo ahoy matey)
 echo "$RAN" | grep 'ahoy matey' >/dev/null
 ensure $? "Run in desk 'hello' didn't work with argument vector"
 
+RAN=$(DESK_SHELL_ARGS="-l" desk run hello shopt)
+echo "$RAN" | grep 'login_shell.*on' >/dev/null
+ensure $? "Run in desk 'hello' didn't work with DESK_SHELL_ARGS"
+
 ## `desk go`
 
 RAN=$(desk go example-project/Deskfile -c 'desk ; exit')

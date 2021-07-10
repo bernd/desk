@@ -4,6 +4,7 @@
 PREFIX="${DESK_DIR:-$HOME/.desk}"
 DESKS="${DESK_DESKS_DIR:-$PREFIX/desks}"
 DESKFILE_NAME=Deskfile
+DESK_SHELL_ARGS="${DESK_SHELL_ARGS:-}"
 
 
 ## Commands
@@ -133,6 +134,9 @@ cmd_go() {
         exit 1
     else
         local SHELL_EXEC="$(get_running_shell)"
+        if [ -n "$DESK_SHELL_ARGS" ]; then
+            set -- "$DESK_SHELL_ARGS" "$@"
+        fi
         DESK_NAME="${TODESK}" DESK_ENV="${DESKPATH}" exec "${SHELL_EXEC}" "$@"
     fi
 }
