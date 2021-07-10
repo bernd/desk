@@ -22,15 +22,15 @@ SHELL_CMD?=
 
 .PHONY: bash
 bash: dockerbuild
-	docker run -it desk/desk /bin/bash $(SHELL_CMD)
+	script -q -e -c "docker run -it desk/desk /bin/bash $(SHELL_CMD)"
  
 .PHONY: zsh
 zsh: dockerbuild
-	docker run -it desk/desk /usr/bin/zsh $(SHELL_CMD)
+	script -q -e -c "docker run -it desk/desk /usr/bin/zsh $(SHELL_CMD)"
  
 .PHONY: fish
 fish: dockerbuild
-	docker run -it desk/desk /usr/bin/fish $(SHELL_CMD)
+	script -q -e -c "docker run -it desk/desk /usr/bin/fish $(SHELL_CMD)"
 
 .PHONY: lint
 lint:
