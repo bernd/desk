@@ -24,7 +24,15 @@ _desk() {
             esac
             ;;
         *)
-            _command_offset 3
+            case ${COMP_WORDS[1]} in
+                run)
+                    # Complete arguments to the "run" command
+                    _command_offset 3
+                    ;;
+                *)
+                    COMPREPLY=()
+                    ;;
+            esac
             ;;
     esac
 }
