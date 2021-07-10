@@ -22,21 +22,21 @@ SHELL_CMD?=
 
 .PHONY: bash
 bash: dockerbuild
-	# Fixes "the input device is not a TTY" errors in GitHub Actions
-	# See: https://github.com/actions/runner/issues/241
-	script -q -e -c "docker run -it desk/desk /bin/bash $(SHELL_CMD)"
+	@# Fixes "the input device is not a TTY" errors in GitHub Actions
+	@# See: https://github.com/actions/runner/issues/241
+	script -a /dev/null -q -e -c "docker run -it desk/desk /bin/bash $(SHELL_CMD)"
  
 .PHONY: zsh
 zsh: dockerbuild
-	# Fixes "the input device is not a TTY" errors in GitHub Actions
-	# See: https://github.com/actions/runner/issues/241
-	script -q -e -c "docker run -it desk/desk /usr/bin/zsh $(SHELL_CMD)"
+	@# Fixes "the input device is not a TTY" errors in GitHub Actions
+	@# See: https://github.com/actions/runner/issues/241
+	script -a /dev/null -q -e -c "docker run -it desk/desk /usr/bin/zsh $(SHELL_CMD)"
  
 .PHONY: fish
 fish: dockerbuild
-	# Fixes "the input device is not a TTY" errors in GitHub Actions
-	# See: https://github.com/actions/runner/issues/241
-	script -q -e -c "docker run -it desk/desk /usr/bin/fish $(SHELL_CMD)"
+	@# Fixes "the input device is not a TTY" errors in GitHub Actions
+	@# See: https://github.com/actions/runner/issues/241
+	script -a /dev/null -q -e -c "docker run -it desk/desk /usr/bin/fish $(SHELL_CMD)"
 
 .PHONY: lint
 lint:
