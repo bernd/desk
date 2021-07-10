@@ -10,7 +10,7 @@ DESK_SHELL_ARGS="${DESK_SHELL_ARGS:-}"
 ## Commands
 
 cmd_version() {
-    echo "◲  desk 0.6.0"
+    echo "◲  desk 0.7.0-beta.1"
 }
 
 
