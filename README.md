@@ -242,15 +242,7 @@ fi
 
 ### Tips accepted
 
-![18ehgMUJBqKc2Eyi6WHiMwHFwA8kobYEhy](http://i.imgur.com/KAfUPA6.png)
+This is a fork of [jamesob/desk](https://github.com/jamesob/desk) so please
+visit James' repository if you want to donate: https://github.com/jamesob/desk#tips-accepted
 
-BTC: `18ehgMUJBqKc2Eyi6WHiMwHFwA8kobYEhy`
-
-Half of all tips will be donated to [an organization providing aid to Syrian refugees](http://www.moas.eu/).
-
-#### Donations made on behalf of tippers
-
-| date | amount | organization |
-| ---- | ------ | ------------ |
-| 2015-11-18 | $1.07 | http://moas.eu |
-| 2016-11-14 | $21.00 | http://moas.eu |
+Thank you!
