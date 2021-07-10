@@ -15,10 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install packages
-        run: |
-          sudo apt-get install shellcheck zsh fish
-
       - name: Run bash tests
         run: |
           SHELL_CMD="-c ./run_tests.sh" make bash zsh
@@ -30,3 +26,16 @@ jobs:
       - name: Run fish tests
         run: |
           SHELL_CMD="-c ./run_tests.fish" make fish
+
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install packages
+        run: |
+          sudo apt-get install shellcheck
+
+      - name: Run linter
+        run: |
+          make lint
