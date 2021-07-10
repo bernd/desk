@@ -186,7 +186,7 @@ cmd_list() {
             len=${#name}
             (( len > longest )) && longest=$len
         fi
-    done < <(find "${DESKS}/" -name "*${DESKEXT}" -print0)
+    done < <(find "${DESKS}/" -name "*${DESKEXT}" -print0 | sort -zV)
     if [[ "$AUTO_ALIGN" != false ]]; then
         print_aligned "$out" "$longest"
     else

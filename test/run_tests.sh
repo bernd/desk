@@ -56,6 +56,11 @@ ln -s "$HOME/examples" "$HOME/.desk/desks"
 
 ## `desk list`
 
+# sorted by name
+LIST=$(desk list | awk '{print $1}' | tr '\n' ' ')
+echo "$LIST" | grep "desk hello python_project terraform" >/dev/null
+ensure $? "Desk list output is not sorted"
+
 # --no-format
 LIST=$(desk list --no-format)
 echo "$LIST" | grep "desk - the desk I use to work on desk :)" >/dev/null
