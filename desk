@@ -53,7 +53,7 @@ cmd_init() {
         echo "Desk dir already exists at ${PREFIX}"
         exit 1
     fi
-    read -p "Where do you want to store your deskfiles? (default: ${PREFIX}): " \
+    read -r -p "Where do you want to store your deskfiles? (default: ${PREFIX}): " \
         NEW_PREFIX
     [ -z "${NEW_PREFIX}" ] && NEW_PREFIX="$PREFIX"
 
@@ -70,7 +70,7 @@ cmd_init() {
         zsh)    local SHELLRC="${HOME}/.zshrc" ;;
     esac
 
-    read -p "Where's your shell rc file? (default: ${SHELLRC}): " \
+    read -r -p "Where's your shell rc file? (default: ${SHELLRC}): " \
         USER_SHELLRC
     [ -z "${USER_SHELLRC}" ] && USER_SHELLRC="$SHELLRC"
     if [ ! -f "$USER_SHELLRC" ]; then
@@ -297,7 +297,7 @@ get_running_shell() {
         local CMDLINE_SHELL=$(ps -o comm= -p $PPID | tail -1 | sed -e 's/login/bash/' -e 's/^-//')
     fi
 
-    if [ ! -z "$CMDLINE_SHELL" ]; then
+    if [ -n "$CMDLINE_SHELL" ]; then
         basename "$CMDLINE_SHELL"
         exit
     fi
