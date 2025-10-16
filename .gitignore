@@ -1,0 +1,11 @@
+# Compiled binaries
+desk-go
+
+# Build artifacts
+dist/
+
+# IDE
+.idea/
+
+# Test files
+test_simple.sh
