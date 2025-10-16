@@ -1,0 +1,32 @@
+.PHONY: build
+build:
+	go build -o desk
+
+.PHONY: install
+install: build
+	cp ./desk /usr/local/bin/desk
+
+.PHONY: uninstall
+uninstall:
+	rm -f /usr/local/bin/desk
+
+.PHONY: test
+test:
+	go test ./...
+
+.PHONY: lint
+lint:
+	go vet ./...
+	go fmt ./...
+
+.PHONY: clean
+clean:
+	rm -f desk desk-go
+
+# Build for multiple platforms
+.PHONY: build-all
+build-all:
+	GOOS=linux GOARCH=amd64 go build -o dist/desk-linux-amd64
+	GOOS=linux GOARCH=arm64 go build -o dist/desk-linux-arm64
+	GOOS=darwin GOARCH=amd64 go build -o dist/desk-darwin-amd64
+	GOOS=darwin GOARCH=arm64 go build -o dist/desk-darwin-arm64
