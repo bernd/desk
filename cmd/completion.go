@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -37,15 +38,20 @@ Fish:
 `,
 	DisableFlagsInUseLine: true,
 	ValidArgs:             []string{"bash", "zsh", "fish"},
-	Args:                  cobra.ExactValidArgs(1),
+	Args:                  cobra.MatchAll(cobra.ExactArgs(1), cobra.OnlyValidArgs),
 	Run: func(cmd *cobra.Command, args []string) {
+		var err error
 		switch args[0] {
 		case "bash":
-			rootCmd.GenBashCompletion(os.Stdout)
+			err = rootCmd.GenBashCompletion(os.Stdout)
 		case "zsh":
-			rootCmd.GenZshCompletion(os.Stdout)
+			err = rootCmd.GenZshCompletion(os.Stdout)
 		case "fish":
-			rootCmd.GenFishCompletion(os.Stdout, true)
+			err = rootCmd.GenFishCompletion(os.Stdout, true)
+		}
+		if err != nil {
+			fmt.Fprintf(os.Stderr, "Error generating completion: %v\n", err)
+			os.Exit(1)
 		}
 	},
 }

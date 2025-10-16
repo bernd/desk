@@ -80,14 +80,27 @@ func runInit(cmd *cobra.Command, args []string) {
 		fmt.Fprintf(os.Stderr, "Failed to open shell rc file: %v\n", err)
 		os.Exit(1)
 	}
-	defer f.Close()
+	defer func() {
+		if closeErr := f.Close(); closeErr != nil {
+			fmt.Fprintf(os.Stderr, "Failed to close shell rc file: %v\n", closeErr)
+		}
+	}()
 
-	f.WriteString("\n# Hook for desk activation\n")
+	if _, err := f.WriteString("\n# Hook for desk activation\n"); err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to write to shell rc file: %v\n", err)
+		os.Exit(1)
+	}
 	
+	var hookLine string
 	if shellType == "fish" {
-		f.WriteString("test -n \"$DESK_ENV\"; and . \"$DESK_ENV\"; or true\n")
+		hookLine = "test -n \"$DESK_ENV\"; and . \"$DESK_ENV\"; or true\n"
 	} else {
-		f.WriteString("[ -n \"$DESK_ENV\" ] && source \"$DESK_ENV\" || true\n")
+		hookLine = "[ -n \"$DESK_ENV\" ] && source \"$DESK_ENV\" || true\n"
+	}
+	
+	if _, err := f.WriteString(hookLine); err != nil {
+		fmt.Fprintf(os.Stderr, "Failed to write to shell rc file: %v\n", err)
+		os.Exit(1)
 	}
 
 	desksPath := filepath.Join(newPrefix, "desks")
