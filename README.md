@@ -1,8 +1,6 @@
 
 # ◲  desk
 
-[![build](https://api.travis-ci.org/jamesob/desk.svg?branch=master)](https://travis-ci.org/jamesob/desk) [![Join the chat at https://gitter.im/jamesob/desk](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/jamesob/desk?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 Lightweight workspace manager for the shell.
 
 Desk makes it easy to flip back and forth between different project contexts in
@@ -118,12 +116,12 @@ rendering.
 Assuming `~/bin` exists and is on the PATH... otherwise, substitute `/usr/local/bin`
 and add `sudo` as needed.
 
-0. `curl https://raw.githubusercontent.com/jamesob/desk/master/desk > ~/bin/desk`
+0. `curl https://raw.githubusercontent.com/bernd/desk/master/desk > ~/bin/desk`
 0. `chmod +x ~/bin/desk`
 
 #### With git
 
-0. `git clone git@github.com:jamesob/desk.git && cd desk && sudo make install`
+0. `git clone git@github.com:bernd/desk.git && cd desk && sudo make install`
 
 After that, run `desk init` and start adding deskfiles with either `desk edit [deskfile name]`
 or by manually adding shell scripts into your deskfiles directory (by default `~/.desk/desks/`).
@@ -157,17 +155,17 @@ Optionally, use one of the zsh plugin frameworks mentioned below.
 or
 
 0. `cd ~/.oh-my-zsh/custom/plugins`
-0. `git clone git@github.com:jamesob/desk.git /tmp/desk && cp -r /tmp/desk/shell_plugins/zsh desk`
+0. `git clone git@github.com:bernd/desk.git /tmp/desk && cp -r /tmp/desk/shell_plugins/zsh desk`
 0. Add desk to your plugin list
 
 #### Using [Antigen](https://github.com/zsh-users/antigen)
 
-0. Add `antigen bundle jamesob/desk shell_plugins/zsh` to your `.zshrc`
+0. Add `antigen bundle bernd/desk shell_plugins/zsh` to your `.zshrc`
 0. Open a new terminal window. Antigen will clone the desk repo and add it to your path.
 
 #### Using [zgen](https://github.com/tarjoilija/zgen)
 
-0. Add `zgen load jamesob/desk shell_plugins/zsh` to your `.zshrc` with your other load commands
+0. Add `zgen load bernd/desk shell_plugins/zsh` to your `.zshrc` with your other load commands
 0. `rm ~/.zgen/init.zsh`
 0. Start a new shell; zgen will generate a new `init.zsh` and automatically clone the desk repository for you and add it to your path.
 
