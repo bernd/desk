@@ -107,10 +107,6 @@ rendering.
 
 ### Installing
 
-#### With homebrew
-
-`brew install desk`
-
 #### With curl
 
 Assuming `~/bin` exists and is on the PATH... otherwise, substitute `/usr/local/bin`
