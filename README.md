@@ -31,7 +31,7 @@ There are no dependencies other than `bash`. Desk is explicitly tested with `bas
 `zsh`, and `fish`.
 
 ```sh
-◲  desk 0.7.0-beta.1
+◲  desk 0.7.1
 
 Usage:
 
