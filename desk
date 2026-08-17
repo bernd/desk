@@ -108,7 +108,7 @@ cmd_go() {
     local DESKEXT=$(get_deskfile_extension)
     local DESKPATH="$(find "${DESKS}/" -name "${TODESK}${DESKEXT}" 2>/dev/null)"
 
-    local POSSIBLE_DESKFILE_DIR="${TODESK%$DESKFILE_NAME}"
+    local POSSIBLE_DESKFILE_DIR="${TODESK%"$DESKFILE_NAME"}"
     if [ -z "$POSSIBLE_DESKFILE_DIR" ]; then
       POSSIBLE_DESKFILE_DIR="."
     fi
@@ -121,7 +121,7 @@ cmd_go() {
         exit 1
       fi
 
-      local REALPATH=$( cd $POSSIBLE_DESKFILE_DIR && pwd )
+      local REALPATH=$( cd "$POSSIBLE_DESKFILE_DIR" && pwd )
       DESKPATH="${REALPATH}/${DESKFILE_NAME}"
       TODESK=$(basename "$REALPATH")
     fi
